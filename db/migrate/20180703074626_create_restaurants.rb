@@ -13,6 +13,8 @@ class CreateRestaurants < ActiveRecord::Migration[5.0]
       t.integer   :max_price    #최대가격
       t.string    :phone        #전화번호
       t.string    :b_number     #사업자번호
+      t.string    :breaktime    #breaktime
+      t.string    :holiday      #휴무일
       
       #reference
       t.integer   :state_id

@@ -27,6 +27,9 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new(restaurant_params)
 
     respond_to do |format|
+      @restaurant.state_id = 1;
+      @restaurant.district_id =1;
+      @restaurant.road_id = 1;
       if @restaurant.save
         format.html { redirect_to @restaurant, notice: 'Restaurant was successfully created.' }
         format.json { render :show, status: :created, location: @restaurant }
@@ -69,6 +72,7 @@ class RestaurantsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def restaurant_params
-      params.fetch(:restaurant, {})
+      params.require(:restaurant).permit(:res_name,:branch_name,:detail_addr,:food_type,:open_hour,
+                                         :close_hour,:min_price,:max_price,:phone,:b_number,:image_path)
     end
 end
